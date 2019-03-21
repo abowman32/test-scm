@@ -44,7 +44,7 @@ def syncSourceFromGit(gitrepo,timeOut=10) {
         [$class: 'SubmoduleOption', 
         disableSubmodules: false, parentCredentials: false, 
         reference: '', trackingSubmodules: false], 
-        [$class: 'CheckoutOption', timeout: timeOut], ], 
+        [timeout: timeOut], ], 
         submoduleCfg: [], 
         userRemoteConfigs: []
     ]])
