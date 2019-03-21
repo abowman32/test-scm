@@ -28,12 +28,13 @@ node ('!master') {
 @NonCPS 
 def showChangeLogs() { 
     def changeLogSets = currentBuild.rawBuild.changeSets 
-    println changeLogSets.toString()
+    println changeLogSets.size()
     for (int i = 0; i < changeLogSets.size(); i++) { 
         def entries = changeLogSets[i].items 
+        println entries.toString()
         for (int j = 0; j < entries.length; j++) { 
             def entry = entries[j] 
-            echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}" 
+            println "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}" 
         } 
     } 
 }//showChangeLogs
