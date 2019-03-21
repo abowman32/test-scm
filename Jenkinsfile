@@ -21,7 +21,7 @@ import groovy.json.JsonOutput
 
 node ('!master') { 
     boolean recursiveSubmoduleBool=false 
-    syncSourceFromGit(GITREPO,BRANCH_NAME,PROJECT_DIR,recursiveSubmoduleBool) 
+    syncSourceFromGit("https://github.com/abowman32/test-scm") 
     showChangeLogs() 
 }
 
@@ -37,16 +37,16 @@ def showChangeLogs() {
     } 
 }//showChangeLogs
 
-// def syncSourceFromGit(gitrepo,gitbranch,projectdir,recursSubMBool,timeOut=10) { 
-// checkout([$class: 'GitSCM', branches: [[name: "${BRANCH_NAME}"]], 
-// doGenerateSubmoduleConfigurations: false, 
-// extensions: [[$class: 'RelativeTargetDirectory', 
-// relativeTargetDir: "${projectdir}"], [$class: 'SubmoduleOption', 
-// disableSubmodules: false, parentCredentials: false, 
-// recursiveSubmodules: recursSubMBool, reference: '', trackingSubmodules: false], 
-// [$class: 'CheckoutOption', timeout: timeOut], ], 
-// submoduleCfg: [], 
-// userRemoteConfigs: [[credentialsId: 'SSHKEY-DCMBUILD-GIT-MAC-LINUX', 
-// url: "${gitrepo}"]]])
+def syncSourceFromGit(gitrepo,timeOut=10) { 
+    checkout([$class: 'GitSCM', branches: [[name: "master"]], 
+    doGenerateSubmoduleConfigurations: false, 
+    extensions: [[$class: 'RelativeTargetDirectory', 
+        [$class: 'SubmoduleOption', 
+        disableSubmodules: false, parentCredentials: false, 
+        reference: '', trackingSubmodules: false], 
+        [$class: 'CheckoutOption', timeout: timeOut], ], 
+        submoduleCfg: [], 
+        userRemoteConfigs: []
+    ]])
 
-// } 
+} 
