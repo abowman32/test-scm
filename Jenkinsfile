@@ -28,7 +28,7 @@ node ('!master') {
 @NonCPS 
 def showChangeLogs() { 
     def changeLogSets = currentBuild.rawBuild.changeSets 
-    echo changeLogSets.size()
+    //echo changeLogSets.size()
     for (int i = 0; i < changeLogSets.size(); i++) { 
         def entries = changeLogSets[i].items 
         echo entries.toString()
