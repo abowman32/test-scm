@@ -19,7 +19,7 @@
 
 import groovy.json.JsonOutput
 
-node ('!master') { 
+node () { 
     boolean recursiveSubmoduleBool=false 
     syncSourceFromGit("https://github.com/abowman32/test-scm") 
     showChangeLogs() 
