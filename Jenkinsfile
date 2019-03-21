@@ -28,10 +28,8 @@ node ('!master') {
 @NonCPS 
 def showChangeLogs() { 
     def changeLogSets = currentBuild.rawBuild.changeSets 
-    //echo changeLogSets.size()
     for (int i = 0; i < changeLogSets.size(); i++) { 
         def entries = changeLogSets[i].items 
-        echo entries.toString()
         for (int j = 0; j < entries.length; j++) { 
             def entry = entries[j] 
             echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}" 
@@ -42,4 +40,4 @@ def showChangeLogs() {
 def syncSourceFromGit(gitrepo) { 
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/abowman32/test-scm']]])
 
-} 
+}
