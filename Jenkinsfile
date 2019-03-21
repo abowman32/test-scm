@@ -38,5 +38,6 @@ def showChangeLogs() {
 }//showChangeLogs
 
 def syncSourceFromGit(gitrepo) { 
-    checkout([$class: 'GitSCM', branches: [[name: "master"]]])
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/abowman32/test-scm']]])
+
 } 
