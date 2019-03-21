@@ -37,16 +37,6 @@ def showChangeLogs() {
     } 
 }//showChangeLogs
 
-def syncSourceFromGit(gitrepo,timeOut=10) { 
-    checkout([$class: 'GitSCM', branches: [[name: "master"]], 
-    doGenerateSubmoduleConfigurations: false, 
-    extensions: [[$class: 'RelativeTargetDirectory', 
-        [$class: 'SubmoduleOption', 
-        disableSubmodules: false, parentCredentials: false, 
-        reference: '', trackingSubmodules: false], 
-        [timeout: timeOut], ], 
-        submoduleCfg: [], 
-        userRemoteConfigs: []
-    ]])
-
+def syncSourceFromGit(gitrepo) { 
+    checkout([$class: 'GitSCM', branches: [[name: "master"]]])
 } 
